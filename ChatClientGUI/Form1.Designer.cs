@@ -39,7 +39,7 @@
             this.displayConnection_lbl.AutoSize = true;
             this.displayConnection_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.displayConnection_lbl.ForeColor = System.Drawing.Color.Red;
-            this.displayConnection_lbl.Location = new System.Drawing.Point(314, 9);
+            this.displayConnection_lbl.Location = new System.Drawing.Point(12, 9);
             this.displayConnection_lbl.Name = "displayConnection_lbl";
             this.displayConnection_lbl.Size = new System.Drawing.Size(116, 20);
             this.displayConnection_lbl.TabIndex = 0;
