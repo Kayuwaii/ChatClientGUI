@@ -51,6 +51,7 @@
             this.inMessage_txtbox.Name = "inMessage_txtbox";
             this.inMessage_txtbox.Size = new System.Drawing.Size(334, 20);
             this.inMessage_txtbox.TabIndex = 1;
+            this.inMessage_txtbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.inMessage_txtbox_KeyDown);
             // 
             // sendMessage_btn
             // 

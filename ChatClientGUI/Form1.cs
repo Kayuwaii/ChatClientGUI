@@ -118,7 +118,8 @@ namespace ChatClientGUI
             byte[] ba = Encoding.UTF8.GetBytes(str);
 
             stm.Write(ba, 0, ba.Length);
-            cntrl = true;
+            inMessage_txtbox.ResetText();
+            GC.Collect();
         }
 
 
@@ -126,12 +127,13 @@ namespace ChatClientGUI
         {
             timer1 = new Timer();
             timer1.Tick += new EventHandler(timer1_Tick);
-            timer1.Interval = 200; // in miliseconds
+            timer1.Interval = 50; // in miliseconds
             timer1.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            int cntr = 0;
             if (tcpclnt.Available > 0)
             {
                 Stream stm = tcpclnt.GetStream();
@@ -146,6 +148,21 @@ namespace ChatClientGUI
                     msg += Convert.ToChar(bb[i]);
                 }
                 chatDisplayer_txtbox.AppendText(TxtDecrypt(msg, EncryptionKey) + "\n"); ;
+                cntr++;
+                if (cntr > 2)
+                {
+                    GC.Collect();
+                    cntr = 0;
+                }
+            }
+
+        }
+
+        private void inMessage_txtbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                sendMessage_btn.PerformClick();
             }
         }
 
